@@ -2,6 +2,7 @@
 > Git 쓰면서 겪었던 상황과 이를 해결한 명령어 모음입니다.
 
 ## Index
+- [git stash 적용 후 충돌(conflict)난 경우](#git-stash-적용-후-충돌conflict난-경우)
 - [git stash 사용하기](#git-stash-사용하기)
 - [Remote Branch 가져오기](#remote-branch-가져오기)
 - [Remote Branch 참고하기](#remote-branch-참고하기)
@@ -16,6 +17,9 @@
 - [Github Pull Requests 충돌](#github-pull-requests-충돌)
 
 ---
+
+### git stash 적용 후 충돌(conflict)난 경우
+> 참고: [병합 충돌을 일으키는 git stash pop 실행 취소](https://procodes.tistory.com/674)
 
 ### git stash 사용하기
 > 참고: [[Git] git stash 명령어 사용하기](https://gmlwjd9405.github.io/2018/05/18/git-stash.html)
