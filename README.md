@@ -1,6 +1,8 @@
 # Git 명령어 정리
 > Git 쓰면서 겪었던 상황과 이를 해결한 명령어 모음입니다.
 
+## Index
+- [git stash 사용하기](#git-stash-사용하기)
 - [Remote Branch 가져오기](#remote-branch-가져오기)
 - [Remote Branch 참고하기](#remote-branch-참고하기)
 - [Remote Branch에 올라간 커밋 취소하기](#remote-branch에-올라간-커밋-취소하기)
@@ -13,6 +15,42 @@
 - [PR 번호로 코드 불러오기 설정](#pr-번호로-코드-불러오기-설정)
 - [Github Pull Requests 충돌](#github-pull-requests-충돌)
 
+---
+
+### git stash 사용하기
+> 참고: [[Git] git stash 명령어 사용하기](https://gmlwjd9405.github.io/2018/05/18/git-stash.html)
+
+#### 하던 작업 임시로 저장하고 비우기(stash)
+```
+git stash
+git stash save
+```
+
+#### stash 목록 확인
+```
+git stash list
+```
+
+#### stash 적용하기
+```
+# 가장 최근 stash된 목록 적용하기
+git stash applay
+
+# stash 목록 중 선택해서 적용하기 (stash 목록 형식: stash@{<번호>})
+git stash applay <적용할 stash 목록>
+```
+
+#### stash 삭제하기
+```
+# 가장 최근 stash된 목록 삭제하기
+git stash drop
+
+# stash 목록 중 선택해서 삭제하기 (stash 목록 형식: stash@{<번호>})
+git stash drop <삭제할 stash 목록>
+
+# 가장 최근 stash된 목록을 적용하고 삭제하기
+git stash pop
+```
 
 ### Remote Branch 가져오기
 > 참고: [Git remote branch 가져오기](https://cjh5414.github.io/get-git-remote-branch/)
