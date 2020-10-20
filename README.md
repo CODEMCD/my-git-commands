@@ -1,6 +1,8 @@
 # Git 명령어 정리
 > Git 쓰면서 겪었던 상황과 이를 해결한 명령어 모음입니다.
 
+> 2020-10-11 이후로 [개발 위키](https://www.notion.so/b049464f79644438901b071f8630efed)로 옮김.
+
 - [Remote Branch 가져오기](#remote-branch-가져오기)
 - [Remote Branch 참고하기](#remote-branch-참고하기)
 - [Remote Branch에 올라간 커밋 취소하기](#remote-branch에-올라간-커밋-취소하기)
@@ -105,6 +107,7 @@ git commit --amend
 git commit --amend --no-edit --date="Mon 20 Aug 2020 19:19:19 KST"
 ```
 
+- 월: Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
 - 요일: Sun, Mon, Tue, Wed, Thu, Fri, Sat
 
 현재 날짜로 변경
