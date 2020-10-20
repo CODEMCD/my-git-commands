@@ -3,10 +3,13 @@
 
 > 2020-10-11 이후로 [개발 위키](https://www.notion.so/b049464f79644438901b071f8630efed)로 옮김.
 
+## Index
+- [git stash 적용 후 충돌(conflict)난 경우](#git-stash-적용-후-충돌conflict난-경우)
+- [git stash 사용하기](#git-stash-사용하기)
 - [Remote Branch 가져오기](#remote-branch-가져오기)
 - [Remote Branch 참고하기](#remote-branch-참고하기)
 - [Remote Branch에 올라간 커밋 취소하기](#remote-branch에-올라간-커밋-취소하기)
-- [Local Branch와 Remote Branch의 이름이 다른 상태에서 Push 하기](#local-branch와-remote-branch의-이름이-다른-상태에서-push-하기)
+- [Remote Branch에 push하기](#remote-branch에-push하기)
 - [Remote Branch에 잘못 올라간 파일 삭제하기](#remote-branch에-잘못-올라간-파일-삭제하기)
 - [git add 취소하기](#git-add-취소하기)
 - [.gitignore가 동작하지 않을 때](#gitignore가-동작하지-않을-때)
@@ -14,6 +17,47 @@
 - [rebase 를 활용하여 commit 정보 변경하기](#rebase-를-활용하여-commit-정보-변경하기)
 - [PR 번호로 코드 불러오기 설정](#pr-번호로-코드-불러오기-설정)
 - [Github Pull Requests 충돌](#github-pull-requests-충돌)
+
+---
+
+### git stash 적용 후 충돌(conflict)난 경우
+> 참고: [병합 충돌을 일으키는 git stash pop 실행 취소](https://procodes.tistory.com/674)
+
+
+### git stash 사용하기
+> 참고: [[Git] git stash 명령어 사용하기](https://gmlwjd9405.github.io/2018/05/18/git-stash.html)
+
+#### 하던 작업 임시로 저장하고 비우기(stash)
+```
+git stash
+git stash save
+```
+
+#### stash 목록 확인
+```
+git stash list
+```
+
+#### stash 적용하기
+```
+# 가장 최근 stash된 목록 적용하기
+git stash applay
+
+# stash 목록 중 선택해서 적용하기 (stash 목록 형식: stash@{<번호>})
+git stash applay <적용할 stash 목록>
+```
+
+#### stash 삭제하기
+```
+# 가장 최근 stash된 목록 삭제하기
+git stash drop
+
+# stash 목록 중 선택해서 삭제하기 (stash 목록 형식: stash@{<번호>})
+git stash drop <삭제할 stash 목록>
+
+# 가장 최근 stash된 목록을 적용하고 삭제하기
+git stash pop
+```
 
 
 ### Remote Branch 가져오기
@@ -34,6 +78,7 @@ git checkout -t origin/feature/Issue-1
 git checkout -b <생성할 branch 이름> origin/feature/Issue-1
 ```
 
+
 ### Remote Branch 참고하기
 > 참고: [Git remote branch 가져오기](https://cjh5414.github.io/get-git-remote-branch/)
 
@@ -48,12 +93,36 @@ git checkout <원격 branch 이름>
 ### Remote Branch에 올라간 커밋 취소하기
 > 참고: [원격 저장소에 올라간 커밋 되돌리기](https://jupiny.com/2019/03/19/revert-commits-in-remote-repository/)
 
-### Local Branch와 Remote Branch의 이름이 다른 상태에서 Push 하기
-> 참고: [[Git] Github에 잘못 올라간 파일 삭제하기](https://gmlwjd9405.github.io/2018/05/17/git-delete-incorrect-files.html)
+
+### Remote Branch에 push하기
+> 참고: [How To Push Git Branch To Remote](https://devconnected.com/how-to-push-git-branch-to-remote/)
+
+Local 설정에서 Remote 레포지토리 이름은 'origin'으로 통일
+
+```
+# remote repository 목록 보기
+git remote -v
+```
+
+#### Local Branch와 Remote Branch 이름이 같을 때
+
+```
+git push origin <로컬 브랜치 이름>
+```
+
+#### Local Branch와 Remote Branch의 이름이 다를 때
 
 ```
 git push origin <로컬 브랜치 이름>:<원격 브랜치 이름>
 ```
+
+#### Remote Branch가 존재하지 않을 때
+아래 명령어는 remote 브랜치를 생성한 후 push한다.
+
+```
+git push -u origin <로컬 브랜치 이름>
+```
+
 
 ### Remote Branch에 잘못 올라간 파일 삭제하기
 
@@ -65,6 +134,7 @@ git rm <파일 이름>
 git rm --cached <파일 이름>
 ```
 
+
 ### git add 취소하기
 > 참고: [[Git] git add 취소하기, git commit 취소하기, git push 취소하기](https://gmlwjd9405.github.io/2018/05/25/git-add-cancle.html)
 
@@ -75,6 +145,7 @@ git reset HEAD
 # git add 특정 파일 취소
 git reset HEAD <파일 이름>
 ```
+
 
 ### .gitignore가 동작하지 않을 때
 > 참고: [.gitignore가 작동하지 않을때 대처법](https://jojoldu.tistory.com/307)
@@ -88,6 +159,7 @@ git rm -r --cached .
 git add .
 git commit -m "fix: Untracked files"
 ```
+
 
 ### 마지막 commit 정보 변경하기
 마지막 commit에 대한 정보를 변경할 때는 `--amend` 옵션을 사용한다.
@@ -122,10 +194,12 @@ git commit —amend —no-edit —date="$(date)"
 git commit —amend —no-edit —author="codemcd"
 ```
 
+
 ### rebase 를 활용하여 commit 정보 변경하기
 > 참고: [이미 커밋된 내용에서 author(작성자) 수정하기](https://jojoldu.tistory.com/120)
 
 rebase를 사용하면 여러 commit의 정보를 변경할 수 있다.
+
 
 ### PR 번호로 코드 불러오기 설정
 > 참고: <https://gist.github.com/gnarf/5406589>
@@ -142,6 +216,7 @@ rebase를 사용하면 여러 commit의 정보를 변경할 수 있다.
 ```
 
 2. `git pr [PR 번호] [remote 저장소]` 와 같이 명령어를 입력하면 해당 브랜치를 checkout까지 해서 가져올 수 있다.
+
 
 ### Github Pull Requests 충돌
 - `git remote add upstream` -> `git fetch upstream 자신의 github_id` -> `git reset --hard upstream/자신의 github_id`
